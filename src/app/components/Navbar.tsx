@@ -9,8 +9,6 @@ import {
   FiCpu,
   FiMenu,
   FiX,
-  FiUser,
-  FiMail,
   FiChevronDown,
 } from "react-icons/fi";
 import { FaReact } from "react-icons/fa";
@@ -30,9 +28,9 @@ export default function NavBar() {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) {
-        setShowNavbar(false); // Scrolling down
+        setShowNavbar(false);
       } else {
-        setShowNavbar(true); // Scrolling up
+        setShowNavbar(true);
       }
       setLastScrollY(window.scrollY);
     };
@@ -76,15 +74,11 @@ export default function NavBar() {
 
   return (
     <>
-      {/* Desktop Navbar */}
+      {/* Header */}
       <header
         className={`fixed w-full z-50 transition-transform duration-300 ${
           showNavbar ? "translate-y-0" : "-translate-y-full"
-        } ${
-          theme === "dark"
-            ? "bg-transparent backdrop-blur-md"
-            : "bg-transparent backdrop-blur-md"
-        }`}
+        } bg-transparent backdrop-blur-md`}
       >
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -162,7 +156,7 @@ export default function NavBar() {
                 </div>
               </div>
 
-              {/* Other Navigation Items */}
+              {/* Other Items */}
               {otherNavItems.map((item) => {
                 const isActive = pathname.startsWith(item.href);
                 return (
@@ -193,18 +187,31 @@ export default function NavBar() {
               })}
             </nav>
 
+            {/* Mobile Menu Icon + Desktop ThemeToggle */}
             <div className="flex items-center gap-4">
-              {/* <ThemeToggle /> */}
               <button
                 className="md:hidden p-2 rounded-lg"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? (
-                  <FiX className="text-2xl" />
+                  <FiX
+                    className={`text-2xl ${
+                      theme === "dark" ? "text-white" : "text-black"
+                    }`}
+                  />
                 ) : (
-                  <FiMenu className="text-2xl" />
+                  <FiMenu
+                    className={`text-2xl ${
+                      theme === "dark" ? "text-white" : "text-black"
+                    }`}
+                  />
                 )}
               </button>
+
+              {/* Desktop Theme Toggle */}
+              <div className="hidden md:block">
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         </div>
@@ -219,7 +226,7 @@ export default function NavBar() {
         >
           <div className="container mx-auto px-6 py-4">
             <nav className="flex flex-col gap-1">
-              {/* Services Dropdown Mobile */}
+              {/* Services Dropdown */}
               <div className="mb-2">
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
@@ -273,7 +280,7 @@ export default function NavBar() {
                 )}
               </div>
 
-              {/* Other Navigation Items Mobile */}
+              {/* Other Links */}
               {otherNavItems.map((item) => {
                 const isActive = pathname.startsWith(item.href);
                 return (
@@ -303,6 +310,16 @@ export default function NavBar() {
                 );
               })}
             </nav>
+
+            {/* Theme Toggle at Bottom */}
+            <div className="mt-6 border-t pt-4">
+              <div className="text-center text-sm text-gray-500 mb-2">
+                Toggle Theme
+              </div>
+              <div className="flex justify-center">
+                <ThemeToggle inline />
+              </div>
+            </div>
           </div>
         </div>
       )}

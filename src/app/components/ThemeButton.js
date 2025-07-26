@@ -6,7 +6,7 @@ import { useTheme } from "@/app/context/ThemeContext";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ inline = false }) {
   const { theme, toggleTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -15,19 +15,23 @@ export default function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return (
-      <div className="fixed top-6 right-6 z-50 p-3 rounded-full bg-transparent w-[46px] h-[46px]" />
+    return inline ? null : (
+      <div className="fixed top-6 right-6 z-50 p-3 rounded-full w-[46px] h-[46px]" />
     );
   }
 
   return (
     <motion.button
       onClick={toggleTheme}
-      className={`fixed top-6 right-6 z-50 p-3 rounded-full transition-all ${
+      className={`${
+        inline
+          ? "p-3 rounded-full border backdrop-blur-sm"
+          : "fixed top-6 right-6 z-50 p-3 rounded-full border backdrop-blur-sm"
+      } ${
         theme === "dark"
           ? "bg-white/10 hover:bg-white/20 border-white/10"
           : "bg-black/5 hover:bg-black/10 border-gray-200"
-      } border backdrop-blur-sm`}
+      } transition-all`}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
