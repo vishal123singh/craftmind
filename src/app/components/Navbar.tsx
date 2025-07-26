@@ -194,7 +194,7 @@ export default function NavBar() {
             </nav>
 
             <div className="flex items-center gap-4">
-              <ThemeToggle />
+              {/* <ThemeToggle /> */}
               <button
                 className="md:hidden p-2 rounded-lg"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
