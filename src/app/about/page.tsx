@@ -101,7 +101,7 @@ export default function AboutPage() {
         <section className="py-20 relative">
           <div className="container mx-auto px-4">
             <div className="flex flex-col lg:flex-row gap-16 items-center max-w-6xl mx-auto">
-              <motion.div
+              {/* <motion.div
                 className="lg:w-1/2"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -121,7 +121,7 @@ export default function AboutPage() {
                     className="w-full h-auto"
                   />
                 </div>
-              </motion.div>
+              </motion.div> */}
 
               <motion.div
                 className="lg:w-1/2"
@@ -307,17 +307,17 @@ export default function AboutPage() {
               {[
                 {
                   name: "Vishal Singh",
-                  role: "Co-Founder | Lead Developer",
+                  role: "Software Developer",
                   image: "/team-member-1.jpg",
                 },
                 {
                   name: "Aftab Alam",
-                  role: "Co-Founder | Lead Developer",
+                  role: "Lead Developer",
                   image: "/team-member-2.jpg",
                 },
                 {
                   name: "Rahul",
-                  role: "Co-Founder | Lead Developer",
+                  role: "Full Stack Developer",
                   image: "/team-member-3.jpg",
                 },
               ].map((member, index) => (
