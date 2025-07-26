@@ -6,7 +6,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("light"); // Default to light
+  const [theme, setTheme] = useState("dark"); // Default to light
 
   useEffect(() => {
     // Check localStorage first, then system preference
